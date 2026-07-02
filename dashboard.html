@@ -6,6 +6,26 @@
     <title>EduSystem - Panel de Gestión</title>
     <link rel="stylesheet" href="css/estilos.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        /* Panel dinámico estilizado para mostrar a quién estás registrando */
+        .registro-alerta-notif {
+            background-color: #e3fcef;
+            border-left: 5px solid #17b978;
+            color: #0c7048;
+            padding: 15px;
+            border-radius: 6px;
+            margin: 15px 0;
+            display: none;
+            align-items: center;
+            gap: 12px;
+            font-size: 14px;
+            animation: fadeInNotif 0.4s ease-in-out;
+        }
+        @keyframes fadeInNotif {
+            from { opacity: 0; transform: translateY(-5px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
 </head>
 <body class="dash-body-layout">
 
@@ -50,7 +70,7 @@
 
         <section id="sec-estudiantes" class="dash-section" style="display: none;">
             <div class="dash-data-container" style="margin-bottom: 25px;">
-                <h3 style="margin-bottom: 20px; color: #0b6cb6; font-size: 20px;"><i class="fa-solid fa-user-plus"></i> Gestión de Estudiantes</h3>
+                <h3 style="margin-bottom: 20px; color: #0b6cb6; font-size: 20px;"><i class="fa-solid fa-user-plus"></i> Registrar Estudiante</h3>
                 
                 <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; align-items: flex-end;">
                     <div class="dash-form-group" style="margin: 0;">
@@ -59,32 +79,37 @@
                     </div>
                     <div class="dash-form-group" style="margin: 0;">
                         <label>Nombres</label>
-                        <input type="text" id="est-nombres" placeholder="Nombres">
+                        <input type="text" id="est-nombres" placeholder="Henry">
                     </div>
                     <div class="dash-form-group" style="margin: 0;">
                         <label>Apellidos</label>
-                        <input type="text" id="est-apellidos" placeholder="Apellidos">
+                        <input type="text" id="est-apellidos" placeholder="Yeren">
                     </div>
                     <div class="dash-form-group" style="margin: 0;">
                         <label>Carrera</label>
-                        <input type="text" id="est-carrera" placeholder="Carrera">
+                        <input type="text" id="est-carrera" placeholder="Ing. Sistemas">
                     </div>
                     <div class="dash-form-group" style="margin: 0;">
                         <label>Ciclo</label>
-                        <input type="text" id="est-ciclo" placeholder="Ciclo">
+                        <input type="text" id="est-ciclo" placeholder="V">
                     </div>
                     <div class="dash-form-group" style="margin: 0;">
                         <label>Correo</label>
-                        <input type="email" id="est-correo" placeholder="Correo">
+                        <input type="email" id="est-correo" placeholder="henry.yeren@usil.pe">
                     </div>
-                    <button class="dash-btn-primary" id="btn-registrar-estudiante" style="height: 42px; justify-content: center; background-color: #004085;">
+                    <button class="dash-btn-primary" id="btn-registrar-estudiante" style="height: 42px; justify-content: center; background-color: #1064a3;">
                         Registrar estudiante
                     </button>
                 </div>
             </div>
 
+            <div id="alert-estudiante" class="registro-alerta-notif">
+                <i class="fa-solid fa-circle-check"></i>
+                <span id="text-alert-estudiante"></span>
+            </div>
+
             <div class="dash-data-container">
-                <h3 style="margin-bottom: 15px; color: #2c3e50;"><i class="fa-solid fa-list"></i> Lista de estudiantes</h3>
+                <h3 style="margin-bottom: 15px; color: #2c3e50;"><i class="fa-solid fa-list"></i> Lista de Estudiantes</h3>
                 <div class="dash-table-responsive">
                     <table class="dash-table">
                         <thead>
@@ -107,29 +132,34 @@
 
         <section id="sec-cursos" class="dash-section" style="display: none;">
             <div class="dash-data-container" style="margin-bottom: 25px;">
-                <h3 style="margin-bottom: 20px; color: #0b6cb6; font-size: 20px;"><i class="fa-solid fa-book-bookmark"></i> Gestión de Cursos</h3>
+                <h3 style="margin-bottom: 20px; color: #0b6cb6; font-size: 20px;"><i class="fa-solid fa-book-bookmark"></i> Registrar Curso</h3>
                 
                 <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 15px; align-items: flex-end;">
                     <div class="dash-form-group" style="margin: 0;">
                         <label>Código Curso</label>
-                        <input type="text" id="cur-codigo" placeholder="Código Curso">
+                        <input type="text" id="cur-codigo" placeholder="Ej. INF-301">
                     </div>
                     <div class="dash-form-group" style="margin: 0;">
                         <label>Nombre Curso</label>
-                        <input type="text" id="cur-nombre" placeholder="Nombre Curso">
+                        <input type="text" id="cur-nombre" placeholder="Ej. Estructura de Datos">
                     </div>
                     <div class="dash-form-group" style="margin: 0;">
                         <label>Créditos</label>
-                        <input type="number" id="cur-creditos" placeholder="Créditos">
+                        <input type="number" id="cur-creditos" placeholder="Ej. 4">
                     </div>
                     <div class="dash-form-group" style="margin: 0;">
                         <label>Docente</label>
-                        <input type="text" id="cur-docente" placeholder="Docente">
+                        <input type="text" id="cur-docente" placeholder="Ej. Héctor Delgado">
                     </div>
-                    <button class="dash-btn-primary" id="btn-registrar-curso" style="height: 42px; justify-content: center; background-color: #004085;">
+                    <button class="dash-btn-primary" id="btn-registrar-curso" style="height: 42px; justify-content: center; background-color: #1064a3;">
                         Registrar Curso
                     </button>
                 </div>
+            </div>
+
+            <div id="alert-curso" class="registro-alerta-notif">
+                <i class="fa-solid fa-circle-check"></i>
+                <span id="text-alert-curso"></span>
             </div>
 
             <div class="dash-data-container">
@@ -154,29 +184,34 @@
 
         <section id="sec-matriculas" class="dash-section" style="display: none;">
             <div class="dash-data-container" style="margin-bottom: 25px;">
-                <h3 style="margin-bottom: 20px; color: #0b6cb6; font-size: 20px;"><i class="fa-solid fa-file-signature"></i> Gestión de Matrículas</h3>
+                <h3 style="margin-bottom: 20px; color: #0b6cb6; font-size: 20px;"><i class="fa-solid fa-file-signature"></i> Registrar Matrícula</h3>
                 
                 <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; align-items: flex-end;">
                     <div class="dash-form-group" style="margin: 0;">
                         <label>Seleccione estudiante</label>
-                        <select id="mat-estudiante" style="width: 100%; padding: 10px; border: 1px solid #dcdde1; border-radius: 6px;">
-                            <option value="">Seleccione estudiante</option>
+                        <select id="mat-estudiante" style="width: 100%; padding: 10px; border: 1px solid #dcdde1; border-radius: 6px; height: 40px; background: #fff;">
+                            <option value="">-- Seleccionar Alumno --</option>
                         </select>
                     </div>
                     <div class="dash-form-group" style="margin: 0;">
                         <label>Seleccione curso</label>
-                        <select id="mat-curso" style="width: 100%; padding: 10px; border: 1px solid #dcdde1; border-radius: 6px;">
-                            <option value="">Seleccione curso</option>
+                        <select id="mat-curso" style="width: 100%; padding: 10px; border: 1px solid #dcdde1; border-radius: 6px; height: 40px; background: #fff;">
+                            <option value="">-- Seleccionar Asignatura --</option>
                         </select>
                     </div>
-                    <button class="dash-btn-primary" id="btn-registrar-matricula" style="height: 42px; justify-content: center; background-color: #004085;">
+                    <button class="dash-btn-primary" id="btn-registrar-matricula" style="height: 42px; justify-content: center; background-color: #1064a3;">
                         Registrar Matrícula
                     </button>
                 </div>
             </div>
 
+            <div id="alert-matricula" class="registro-alerta-notif">
+                <i class="fa-solid fa-circle-check"></i>
+                <span id="text-alert-matricula"></span>
+            </div>
+
             <div class="dash-data-container">
-                <h3 style="margin-bottom: 15px; color: #2c3e50;"><i class="fa-solid fa-clipboard-list"></i> Lista de Matrículas</h3>
+                <h3 style="margin-bottom: 15px; color: #2c3e50;"><i class="fa-solid fa-clipboard-list"></i> Historial de Matrículas</h3>
                 <div class="dash-table-responsive">
                     <table class="dash-table">
                         <thead>
@@ -194,19 +229,37 @@
         </section>
 
         <section id="sec-reportes" class="dash-section" style="display: none;">
-            <h3 style="margin-bottom: 20px; color: #2c3e50; font-size: 22px;">Reportes del Sistema</h3>
-            <div class="dash-cards-container">
-                <div class="dash-card" style="text-align: center; flex-direction: column; padding: 30px 20px;">
-                    <h4 style="font-size: 16px; color: #34495e; margin-bottom: 15px;">Total de Estudiantes</h4>
-                    <span id="rep-total-estudiantes" style="font-size: 48px; font-weight: bold; color: #0b6cb6;">0</span>
+            <h2 style="margin-bottom: 20px; color: #2c3e50;">Panel de Control - Reportes</h2>
+            
+            <div class="dash-cards-container" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 20px;">
+                <div class="dash-card" style="background: white; padding: 25px; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.05); display: flex; align-items: center; gap: 20px;">
+                    <div style="background: #e8f4fd; color: #0b6cb6; padding: 15px; border-radius: 50%; width: 60px; height: 60px; display: flex; align-items: center; justify-content: center; font-size: 24px;">
+                        <i class="fa-solid fa-users"></i>
+                    </div>
+                    <div>
+                        <span id="rep-total-estudiantes" style="font-size: 32px; font-weight: bold; color: #2c3e50; display: block;">1</span>
+                        <span style="color: #7f8c8d; font-size: 14px;">Total de Estudiantes</span>
+                    </div>
                 </div>
-                <div class="dash-card" style="text-align: center; flex-direction: column; padding: 30px 20px;">
-                    <h4 style="font-size: 16px; color: #34495e; margin-bottom: 15px;">Total de Cursos</h4>
-                    <span id="rep-total-cursos" style="font-size: 48px; font-weight: bold; color: #0b6cb6;">0</span>
+
+                <div class="dash-card" style="background: white; padding: 25px; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.05); display: flex; align-items: center; gap: 20px;">
+                    <div style="background: #fef5e7; color: #f39c12; padding: 15px; border-radius: 50%; width: 60px; height: 60px; display: flex; align-items: center; justify-content: center; font-size: 24px;">
+                        <i class="fa-solid fa-book"></i>
+                    </div>
+                    <div>
+                        <span id="rep-total-cursos" style="font-size: 32px; font-weight: bold; color: #2c3e50; display: block;">1</span>
+                        <span style="color: #7f8c8d; font-size: 14px;">Total de Cursos</span>
+                    </div>
                 </div>
-                <div class="dash-card" style="text-align: center; flex-direction: column; padding: 30px 20px;">
-                    <h4 style="font-size: 16px; color: #34495e; margin-bottom: 15px;">Total de Matrículas</h4>
-                    <span id="rep-total-matriculas" style="font-size: 48px; font-weight: bold; color: #0b6cb6;">0</span>
+
+                <div class="dash-card" style="background: white; padding: 25px; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.05); display: flex; align-items: center; gap: 20px;">
+                    <div style="background: #eafaf1; color: #2ecc71; padding: 15px; border-radius: 50%; width: 60px; height: 60px; display: flex; align-items: center; justify-content: center; font-size: 24px;">
+                        <i class="fa-solid fa-file-invoice"></i>
+                    </div>
+                    <div>
+                        <span id="rep-total-matriculas" style="font-size: 32px; font-weight: bold; color: #2c3e50; display: block;">1</span>
+                        <span style="color: #7f8c8d; font-size: 14px;">Total de Matrículas</span>
+                    </div>
                 </div>
             </div>
         </section>
@@ -215,17 +268,31 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', () => {
-            // Arreglos de memoria temporal
-            let estudiantes = [];
-            let cursos = [];
-            let matriculas = [];
+            // Inicializar con el registro por defecto que tienes en tus capturas
+            let estudiantes = [
+                { codigo: "A20260101", nombres: "Henry Eduardo", apellidos: "Yeren Almeyda", carrera: "Ingeniería de Sistemas", ciclo: "V", correo: "henry.yeren@edu.pe" }
+            ];
+            
+            let cursos = [
+                { codigo: "INF-301", nombre: "Estructura de Datos y Algoritmos", creditos: "4", docente: "Héctor Delgado" }
+            ];
+            
+            let matriculas = [
+                { estudiante: "Henry Eduardo Yeren Almeyda", curso: "Estructura de Datos y Algoritmos" }
+            ];
 
-            // Elementos de navegación
+            // Renderizado Inicial
+            actualizarTablaEstudiantes();
+            actualizarTablaCursos();
+            actualizarTablaMatriculas();
+            actualizarSelects();
+            actualizarContadoresReportes();
+
+            // Navegación de pestañas laterales
             const menuItems = document.querySelectorAll('.menu-item');
             const sections = document.querySelectorAll('.dash-section');
             const titleHeader = document.querySelector('#dash-title');
 
-            // Cambio de pestañas interactivo
             menuItems.forEach(item => {
                 item.addEventListener('click', (e) => {
                     e.preventDefault();
@@ -236,15 +303,10 @@
                     const targetId = item.getAttribute('data-target');
                     document.getElementById(targetId).style.display = 'block';
                     titleHeader.textContent = 'Panel de Control - ' + item.textContent.trim();
-                    
-                    // Actualizar reportes cada vez que se entra a la sección
-                    if(targetId === 'sec-reportes') {
-                        actualizarReportes();
-                    }
                 });
             });
 
-            // --- MÓDULO ESTUDIANTES ---
+            // --- SECCIÓN: ESTUDIANTES ---
             const btnEstudiante = document.getElementById('btn-registrar-estudiante');
             btnEstudiante.addEventListener('click', () => {
                 const codigo = document.getElementById('est-codigo').value.trim();
@@ -259,14 +321,20 @@
                     return;
                 }
 
-                const nuevoEst = { codigo, nombres, apellidos, carrera, ciclo, correo };
+                const nuevoEst = { codigo, nombres, apellidos, carrera: carrera || '-', ciclo: ciclo || '-', correo: correo || '-' };
                 estudiantes.push(nuevoEst);
                 
+                // Actualizaciones automáticas inmediatas
                 actualizarTablaEstudiantes();
                 actualizarSelects();
-                actualizarReportes();
+                actualizarContadoresReportes();
 
-                // Limpiar campos
+                // Mostrar Alerta Visual de quién estás registrando
+                const alertBox = document.getElementById('alert-estudiante');
+                document.getElementById('text-alert-estudiante').innerHTML = `Registrando actualmente a: <strong>${nombres} ${apellidos}</strong> con código <strong>[${codigo}]</strong> correctamente.`;
+                alertBox.style.display = 'flex';
+
+                // Limpiar campos formulario
                 document.getElementById('est-codigo').value = '';
                 document.getElementById('est-nombres').value = '';
                 document.getElementById('est-apellidos').value = '';
@@ -284,11 +352,11 @@
                             <td><strong>${est.codigo}</strong></td>
                             <td>${est.nombres}</td>
                             <td>${est.apellidos}</td>
-                            <td>${est.carrera || '-'}</td>
-                            <td>${est.ciclo || '-'}</td>
-                            <td>${est.correo || '-'}</td>
+                            <td>${est.carrera}</td>
+                            <td>${est.ciclo}</td>
+                            <td>${est.correo}</td>
                             <td>
-                                <button class="dash-btn-action delete" onclick="eliminarEstudiante(${index})"><i class="fa-solid fa-trash"></i></button>
+                                <button class="dash-btn-action delete" onclick="eliminarEstudiante(${index})" style="background: none; border: none; color: #e74c3c; cursor: pointer; font-size: 16px;"><i class="fa-solid fa-trash"></i></button>
                             </td>
                         </tr>
                     `;
@@ -296,13 +364,15 @@
             }
 
             window.eliminarEstudiante = (index) => {
+                document.getElementById('alert-estudiante').style.display = 'none';
                 estudiantes.splice(index, 1);
                 actualizarTablaEstudiantes();
                 actualizarSelects();
-                actualizarReportes();
+                actualizarContadoresReportes();
             };
 
-            // --- MÓDULO CURSOS ---
+
+            // --- SECCIÓN: CURSOS ---
             const btnCurso = document.getElementById('btn-registrar-curso');
             btnCurso.addEventListener('click', () => {
                 const codigo = document.getElementById('cur-codigo').value.trim();
@@ -315,12 +385,18 @@
                     return;
                 }
 
-                const nuevoCur = { codigo, nombre, creditos, docente };
+                const nuevoCur = { codigo, nombre, creditos: creditos || '-', docente: docente || 'Sin Asignar' };
                 cursos.push(nuevoCur);
 
+                // Actualizaciones automáticas inmediatas
                 actualizarTablaCursos();
                 actualizarSelects();
-                actualizarReportes();
+                actualizarContadoresReportes();
+
+                // Mostrar Alerta Visual de qué estás registrando
+                const alertBox = document.getElementById('alert-curso');
+                document.getElementById('text-alert-curso').innerHTML = `Registrando actualmente el curso: <strong>${nombre}</strong> [${codigo}] a cargo del Prof. <strong>${nuevoCur.docente}</strong>.`;
+                alertBox.style.display = 'flex';
 
                 // Limpiar campos
                 document.getElementById('cur-codigo').value = '';
@@ -337,10 +413,10 @@
                         <tr>
                             <td><strong>${cur.codigo}</strong></td>
                             <td>${cur.nombre}</td>
-                            <td>${cur.creditos || '-'}</td>
-                            <td>${cur.docente || '-'}</td>
+                            <td>${cur.creditos}</td>
+                            <td>${cur.docente}</td>
                             <td>
-                                <button class="dash-btn-action delete" onclick="eliminarCurso(${index})"><i class="fa-solid fa-trash"></i></button>
+                                <button class="dash-btn-action delete" onclick="eliminarCurso(${index})" style="background: none; border: none; color: #e74c3c; cursor: pointer; font-size: 16px;"><i class="fa-solid fa-trash"></i></button>
                             </td>
                         </tr>
                     `;
@@ -348,23 +424,25 @@
             }
 
             window.eliminarCurso = (index) => {
+                document.getElementById('alert-curso').style.display = 'none';
                 cursos.splice(index, 1);
                 actualizarTablaCursos();
                 actualizarSelects();
-                actualizarReportes();
+                actualizarContadoresReportes();
             };
 
-            // --- MÓDULO MATRÍCULAS ---
+
+            // --- SECCIÓN: MATRÍCULAS ---
             function actualizarSelects() {
                 const selectEst = document.getElementById('mat-estudiante');
                 const selectCur = document.getElementById('mat-curso');
 
-                selectEst.innerHTML = '<option value="">Seleccione estudiante</option>';
+                selectEst.innerHTML = '<option value="">-- Seleccionar Alumno --</option>';
                 estudiantes.forEach((est, idx) => {
                     selectEst.innerHTML += `<option value="${idx}">${est.codigo} - ${est.nombres} ${est.apellidos}</option>`;
                 });
 
-                selectCur.innerHTML = '<option value="">Seleccione curso</option>';
+                selectCur.innerHTML = '<option value="">-- Seleccionar Asignatura --</option>';
                 cursos.forEach((cur, idx) => {
                     selectCur.innerHTML += `<option value="${idx}">${cur.codigo} - ${cur.nombre}</option>`;
                 });
@@ -376,12 +454,12 @@
                 const curIdx = document.getElementById('mat-curso').value;
 
                 if(estIdx === "" || curIdx === "") {
-                    alert('Debe seleccionar un estudiante y un curso obligatoriamente.');
+                    alert('Debe seleccionar un estudiante y un curso válidos.');
                     return;
                 }
 
                 const alumnoSelected = estudiantes[estIdx];
-                const cursoSelected = cures = cursos[curIdx];
+                const cursoSelected = cursos[curIdx];
 
                 const nuevaMat = {
                     estudiante: `${alumnoSelected.nombres} ${alumnoSelected.apellidos}`,
@@ -389,8 +467,15 @@
                 };
 
                 matriculas.push(nuevaMat);
+                
+                // Actualizaciones automáticas inmediatas
                 actualizarTablaMatriculas();
-                actualizarReportes();
+                actualizarContadoresReportes();
+
+                // Mostrar Alerta Visual de a quién estás matriculando
+                const alertBox = document.getElementById('alert-matricula');
+                document.getElementById('text-alert-matricula').innerHTML = `Matriculando actualmente a: <strong>${nuevaMat.estudiante}</strong> en el curso de <strong>${nuevaMat.curso}</strong>.`;
+                alertBox.style.display = 'flex';
 
                 document.getElementById('mat-estudiante').value = "";
                 document.getElementById('mat-curso').value = "";
@@ -405,7 +490,7 @@
                             <td>${mat.estudiante}</td>
                             <td>${mat.curso}</td>
                             <td>
-                                <button class="dash-btn-action delete" onclick="eliminarMatricula(${index})"><i class="fa-solid fa-ban"></i></button>
+                                <button class="dash-btn-action delete" onclick="eliminarMatricula(${index})" style="background: none; border: none; color: #e74c3c; cursor: pointer; font-size: 16px;"><i class="fa-solid fa-ban"></i></button>
                             </td>
                         </tr>
                     `;
@@ -413,13 +498,15 @@
             }
 
             window.eliminarMatricula = (index) => {
+                document.getElementById('alert-matricula').style.display = 'none';
                 matriculas.splice(index, 1);
                 actualizarTablaMatriculas();
-                actualizarReportes();
+                actualizarContadoresReportes();
             };
 
-            // --- ACTUALIZAR CONTADORES ---
-            function actualizarReportes() {
+
+            // --- CONTADORES EN TIEMPO REAL (REPORTES) ---
+            function actualizarContadoresReportes() {
                 document.getElementById('rep-total-estudiantes').textContent = estudiantes.length;
                 document.getElementById('rep-total-cursos').textContent = cursos.length;
                 document.getElementById('rep-total-matriculas').textContent = matriculas.length;
