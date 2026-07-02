@@ -268,7 +268,7 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', () => {
-            // Inicializar con el registro por defecto que tienes en tus capturas
+            // Inicializar con el registro por defecto de tus capturas
             let estudiantes = [
                 { codigo: "A20260101", nombres: "Henry Eduardo", apellidos: "Yeren Almeyda", carrera: "Ingeniería de Sistemas", ciclo: "V", correo: "henry.yeren@edu.pe" }
             ];
@@ -324,17 +324,16 @@
                 const nuevoEst = { codigo, nombres, apellidos, carrera: carrera || '-', ciclo: ciclo || '-', correo: correo || '-' };
                 estudiantes.push(nuevoEst);
                 
-                // Actualizaciones automáticas inmediatas
                 actualizarTablaEstudiantes();
                 actualizarSelects();
                 actualizarContadoresReportes();
 
-                // Mostrar Alerta Visual de quién estás registrando
+                // Mostrar Alerta Visual
                 const alertBox = document.getElementById('alert-estudiante');
                 document.getElementById('text-alert-estudiante').innerHTML = `Registrando actualmente a: <strong>${nombres} ${apellidos}</strong> con código <strong>[${codigo}]</strong> correctamente.`;
                 alertBox.style.display = 'flex';
 
-                // Limpiar campos formulario
+                // Limpiar campos
                 document.getElementById('est-codigo').value = '';
                 document.getElementById('est-nombres').value = '';
                 document.getElementById('est-apellidos').value = '';
@@ -371,7 +370,6 @@
                 actualizarContadoresReportes();
             };
 
-
             // --- SECCIÓN: CURSOS ---
             const btnCurso = document.getElementById('btn-registrar-curso');
             btnCurso.addEventListener('click', () => {
@@ -388,17 +386,15 @@
                 const nuevoCur = { codigo, nombre, creditos: creditos || '-', docente: docente || 'Sin Asignar' };
                 cursos.push(nuevoCur);
 
-                // Actualizaciones automáticas inmediatas
                 actualizarTablaCursos();
                 actualizarSelects();
                 actualizarContadoresReportes();
 
-                // Mostrar Alerta Visual de qué estás registrando
+                // Mostrar Alerta Visual
                 const alertBox = document.getElementById('alert-curso');
                 document.getElementById('text-alert-curso').innerHTML = `Registrando actualmente el curso: <strong>${nombre}</strong> [${codigo}] a cargo del Prof. <strong>${nuevoCur.docente}</strong>.`;
                 alertBox.style.display = 'flex';
 
-                // Limpiar campos
                 document.getElementById('cur-codigo').value = '';
                 document.getElementById('cur-nombre').value = '';
                 document.getElementById('cur-creditos').value = '';
@@ -430,7 +426,6 @@
                 actualizarSelects();
                 actualizarContadoresReportes();
             };
-
 
             // --- SECCIÓN: MATRÍCULAS ---
             function actualizarSelects() {
@@ -468,11 +463,10 @@
 
                 matriculas.push(nuevaMat);
                 
-                // Actualizaciones automáticas inmediatas
                 actualizarTablaMatriculas();
                 actualizarContadoresReportes();
 
-                // Mostrar Alerta Visual de a quién estás matriculando
+                // Mostrar Alerta Visual
                 const alertBox = document.getElementById('alert-matricula');
                 document.getElementById('text-alert-matricula').innerHTML = `Matriculando actualmente a: <strong>${nuevaMat.estudiante}</strong> en el curso de <strong>${nuevaMat.curso}</strong>.`;
                 alertBox.style.display = 'flex';
@@ -503,7 +497,6 @@
                 actualizarTablaMatriculas();
                 actualizarContadoresReportes();
             };
-
 
             // --- CONTADORES EN TIEMPO REAL (REPORTES) ---
             function actualizarContadoresReportes() {
