@@ -3,7 +3,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const passwordInput = document.querySelector('#contrasena');
     const loginForm = document.querySelector('#loginForm');
 
-    // Funcionalidad original del ojo para ver/ocultar contraseña
+    // Mantiene la funcionalidad original del ojo para ver/ocultar contraseña
     if (togglePassword && passwordInput) {
         togglePassword.addEventListener('click', function () {
             const type = passwordInput.getAttribute('type') === 'password' ? 'text' : 'password';
@@ -13,20 +13,13 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // Validación estricta de credenciales
+    // Redirección directa al dar clic en Ingresar
     if (loginForm) {
         loginForm.addEventListener('submit', (e) => {
             e.preventDefault(); // Evita que la página se recargue sola
-
-            const usuario = document.querySelector('#usuario').value.trim();
-            const contrasena = document.querySelector('#contrasena').value.trim();
-
-            // Validación: Solo ingresa con henry y 1234
-            if (usuario === 'henry' && contrasena === '1234') {
-                window.location.href = 'dashboard.html';
-            } else {
-                alert('Usuario o contraseña incorrectos. Intente nuevamente.');
-            }
+            
+            // Te lleva directo a tu página en blanco de la versión 2
+            window.location.href = 'dashboard.html';
         });
     }
 });
