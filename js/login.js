@@ -1,33 +1,173 @@
-document.addEventListener('DOMContentLoaded', () => {
-    const togglePassword = document.querySelector('#togglePassword');
-    const passwordInput = document.querySelector('#contrasena');
-    const loginForm = document.querySelector('#loginForm');
+:root {
+    --primary-color: #1e543d; 
+    --accent-color: #0b6cb6;  
+    --background-overlay: rgba(20, 35, 50, 0.70); 
+    --text-dark: #2c3e50;
+    --border-color: #dcdde1;
+}
 
-    // Mostrar/Ocultar contraseña
-    if (togglePassword && passwordInput) {
-        togglePassword.addEventListener('click', function () {
-            const type = passwordInput.getAttribute('type') === 'password' ? 'text' : 'password';
-            passwordInput.setAttribute('type', type);
-            this.classList.toggle('fa-eye');
-            this.classList.toggle('fa-eye-slash');
-        });
-    }
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
 
-    // Validación de ingreso y redirección
-    if (loginForm) {
-        loginForm.addEventListener('submit', (e) => {
-            e.preventDefault(); // Detiene el envío por defecto
-            
-            const usuario = document.querySelector('#usuario').value;
-            const contrasena = document.querySelector('#contrasena').value;
+body {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(var(--background-overlay), var(--background-overlay)), 
+                url('../assets/background.jpg') no-repeat center center/cover;
+    padding: 20px;
+}
 
-            // Validación simple para tu simulación (puedes usar cualquier usuario)
-            if (usuario.trim() !== "" && contrasena.trim() !== "") {
-                // Redirige a la pantalla con la base de datos de estudiantes
-                window.location.href = 'dashboard.html';
-            } else {
-                alert('Por favor, complete todos los campos.');
-            }
-        });
-    }
-});
+.login-container {
+    width: 100%;
+    max-width: 400px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.logo-container-box {
+    width: 85px;
+    height: 85px;
+    background-color: #ffffff;
+    border-radius: 20px;
+    margin: 0 auto 12px auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 5px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+}
+
+.logo-container-box img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+}
+
+.login-header {
+    text-align: center;
+    color: #ffffff;
+    margin-bottom: 20px;
+}
+
+.login-header h1 {
+    font-size: 28px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+}
+
+.login-header p {
+    font-size: 14px;
+    opacity: 0.9;
+    margin-top: 4px;
+}
+
+form {
+    background: #ffffff;
+    width: 100%;
+    padding: 35px;
+    border-radius: 20px;
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.25);
+}
+
+form h2 {
+    text-align: center;
+    color: var(--text-dark);
+    font-size: 22px;
+    margin-bottom: 25px;
+    font-weight: 600;
+}
+
+.input-group {
+    margin-bottom: 20px;
+}
+
+.input-group label {
+    display: block;
+    font-size: 13px;
+    color: var(--text-dark);
+    font-weight: 600;
+    margin-bottom: 8px;
+}
+
+.input-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.input-wrapper i {
+    position: absolute;
+    color: #95a5a6;
+    font-size: 16px;
+}
+
+.input-wrapper i:first-child {
+    left: 15px;
+}
+
+.input-wrapper .toggle-password {
+    right: 15px;
+    cursor: pointer;
+    transition: color 0.2s;
+}
+
+.input-wrapper .toggle-password:hover {
+    color: var(--accent-color);
+}
+
+.input-wrapper input {
+    width: 100%;
+    padding: 14px 15px 14px 42px;
+    border: 1px solid var(--border-color);
+    background-color: #f8f9fa;
+    border-radius: 10px;
+    font-size: 14px;
+    color: #2c3e50;
+    outline: none;
+    transition: all 0.3s ease;
+}
+
+.input-wrapper input:focus {
+    border-color: var(--accent-color);
+    background-color: #ffffff;
+    box-shadow: 0 0 0 4px rgba(11, 108, 182, 0.15);
+}
+
+.btn-submit {
+    width: 100%;
+    padding: 14px;
+    background-color: var(--accent-color);
+    color: #ffffff;
+    border: none;
+    border-radius: 10px;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.2s, transform 0.1s;
+    margin-top: 10px;
+}
+
+.btn-submit:hover {
+    background-color: #09548f;
+}
+
+.btn-submit:active {
+    transform: scale(0.98);
+}
+
+.login-footer {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.login-footer p {
+    font-size: 12px;
+    color: rgba(255, 255, 255, 0.7);
+}
