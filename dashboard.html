@@ -5,10 +5,31 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>EduSystem - Panel de Gestión</title>
     <link rel="stylesheet" href="css/estilos.css">
+    <!-- Iconos profesionales para el menú -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        /* Estilo rápido para el aviso de confirmación de registro */
+        .dash-alert-notif {
+            background-color: #e3fcef;
+            border-left: 5px solid #17b978;
+            color: #0c7048;
+            padding: 15px;
+            border-radius: 6px;
+            margin-bottom: 20px;
+            display: none;
+            align-items: center;
+            gap: 12px;
+            animation: fadeIn 0.4s ease-in-out;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
 </head>
 <body class="dash-body-layout">
 
+    <!-- BARRA LATERAL: MENÚ DE NAVEGACIÓN -->
     <div class="dash-sidebar">
         <div class="dash-sidebar-logo">
             <img src="assets/logo.jpg" alt="EduSystem Logo" onerror="this.style.display='none'">
@@ -21,12 +42,15 @@
             <a href="#" class="menu-item" data-target="sec-matriculas"><i class="fa-solid fa-graduation-cap"></i> Matrículas</a>
             <a href="#" class="menu-item" data-target="sec-reportes"><i class="fa-solid fa-chart-pie"></i> Reportes</a>
             
+            <!-- Cerrar Sesión y volver al Login -->
             <a href="index.html" class="dash-logout-btn"><i class="fa-solid fa-right-from-bracket"></i> Cerrar Sesión</a>
         </nav>
     </div>
 
+    <!-- CONTENIDO PRINCIPAL -->
     <div class="dash-main-content">
         
+        <!-- ENCABEZADO SUPERIOR -->
         <header class="dash-main-header">
             <div>
                 <h2 id="dash-title">Panel de Control - Inicio</h2>
@@ -38,6 +62,9 @@
             </div>
         </header>
 
+        <!-- ==========================================
+             SECCIÓN 1: INICIO
+        ========================================== -->
         <section id="sec-inicio" class="dash-section">
             <div class="dash-data-container" style="text-align: center; padding: 60px 20px;">
                 <i class="fa-solid fa-graduation-cap" style="font-size: 70px; color: #0b6cb6; margin-bottom: 20px;"></i>
@@ -48,6 +75,9 @@
             </div>
         </section>
 
+        <!-- ==========================================
+             SECCIÓN 2: GESTIÓN DE ESTUDIANTES
+        ========================================== -->
         <section id="sec-estudiantes" class="dash-section" style="display: none;">
             <div class="dash-data-container" style="margin-bottom: 25px;">
                 <h3 style="margin-bottom: 20px; color: #0b6cb6; font-size: 20px;"><i class="fa-solid fa-user-plus"></i> Gestión de Estudiantes</h3>
@@ -83,6 +113,13 @@
                 </div>
             </div>
 
+            <!-- Alerta dinámica de a quién estás registrando -->
+            <div id="alert-estudiante" class="dash-alert-notif">
+                <i class="fa-solid fa-circle-check" style="font-size: 18px;"></i>
+                <span id="text-alert-estudiante"></span>
+            </div>
+
+            <!-- Tabla de Lista de Estudiantes -->
             <div class="dash-data-container">
                 <h3 style="margin-bottom: 15px; color: #2c3e50;"><i class="fa-solid fa-list"></i> Lista de estudiantes</h3>
                 <div class="dash-table-responsive">
@@ -99,12 +136,16 @@
                             </tr>
                         </thead>
                         <tbody id="tabla-estudiantes">
-                            </tbody>
+                            <!-- Dinámico -->
+                        </tbody>
                     </table>
                 </div>
             </div>
         </section>
 
+        <!-- ==========================================
+             SECCIÓN 3: GESTIÓN DE CURSOS
+        ========================================== -->
         <section id="sec-cursos" class="dash-section" style="display: none;">
             <div class="dash-data-container" style="margin-bottom: 25px;">
                 <h3 style="margin-bottom: 20px; color: #0b6cb6; font-size: 20px;"><i class="fa-solid fa-book-bookmark"></i> Gestión de Cursos</h3>
@@ -132,6 +173,12 @@
                 </div>
             </div>
 
+            <!-- Alerta dinámica de Curso -->
+            <div id="alert-curso" class="dash-alert-notif">
+                <i class="fa-solid fa-circle-check" style="font-size: 18px;"></i>
+                <span id="text-alert-curso"></span>
+            </div>
+
             <div class="dash-data-container">
                 <h3 style="margin-bottom: 15px; color: #2c3e50;"><i class="fa-solid fa-bookmark"></i> Cursos Registrados</h3>
                 <div class="dash-table-responsive">
@@ -146,12 +193,16 @@
                             </tr>
                         </thead>
                         <tbody id="tabla-cursos">
-                            </tbody>
+                            <!-- Dinámico -->
+                        </tbody>
                     </table>
                 </div>
             </div>
         </section>
 
+        <!-- ==========================================
+             SECCIÓN 4: GESTIÓN DE MATRÍCULAS
+        ========================================== -->
         <section id="sec-matriculas" class="dash-section" style="display: none;">
             <div class="dash-data-container" style="margin-bottom: 25px;">
                 <h3 style="margin-bottom: 20px; color: #0b6cb6; font-size: 20px;"><i class="fa-solid fa-file-signature"></i> Gestión de Matrículas</h3>
@@ -175,6 +226,12 @@
                 </div>
             </div>
 
+            <!-- Alerta dinámica de Matrícula -->
+            <div id="alert-matricula" class="dash-alert-notif">
+                <i class="fa-solid fa-circle-check" style="font-size: 18px;"></i>
+                <span id="text-alert-matricula"></span>
+            </div>
+
             <div class="dash-data-container">
                 <h3 style="margin-bottom: 15px; color: #2c3e50;"><i class="fa-solid fa-clipboard-list"></i> Lista de Matrículas</h3>
                 <div class="dash-table-responsive">
@@ -187,14 +244,24 @@
                             </tr>
                         </thead>
                         <tbody id="tabla-matriculas">
-                            </tbody>
+                            <!-- Dinámico -->
+                        </tbody>
                     </table>
                 </div>
             </div>
         </section>
 
+        <!-- ==========================================
+             SECCIÓN 5: REPORTES
+        ========================================== -->
         <section id="sec-reportes" class="dash-section" style="display: none;">
             <h3 style="margin-bottom: 20px; color: #2c3e50; font-size: 22px;">Reportes del Sistema</h3>
+            
+            <div id="alert-reporte" class="dash-alert-notif" style="display: flex; background-color: #e8f4fd; border-left-color: #0b6cb6; color: #053b65; margin-bottom: 25px;">
+                <i class="fa-solid fa-circle-info" style="font-size: 18px;"></i>
+                <span id="text-alert-reporte">Mostrando resumen estadístico actual de registros analizados.</span>
+            </div>
+
             <div class="dash-cards-container">
                 <div class="dash-card" style="text-align: center; flex-direction: column; padding: 30px 20px;">
                     <h4 style="font-size: 16px; color: #34495e; margin-bottom: 15px;">Total de Estudiantes</h4>
@@ -213,19 +280,19 @@
 
     </div>
 
+    <!-- ==========================================
+         LÓGICA ACTUALIZADA CON MONITOR DE REGISTROS
+    ========================================== -->
     <script>
         document.addEventListener('DOMContentLoaded', () => {
-            // Arreglos de memoria temporal
             let estudiantes = [];
             let cursos = [];
             let matriculas = [];
 
-            // Elementos de navegación
             const menuItems = document.querySelectorAll('.menu-item');
             const sections = document.querySelectorAll('.dash-section');
             const titleHeader = document.querySelector('#dash-title');
 
-            // Cambio de pestañas interactivo
             menuItems.forEach(item => {
                 item.addEventListener('click', (e) => {
                     e.preventDefault();
@@ -237,14 +304,13 @@
                     document.getElementById(targetId).style.display = 'block';
                     titleHeader.textContent = 'Panel de Control - ' + item.textContent.trim();
                     
-                    // Actualizar reportes cada vez que se entra a la sección
                     if(targetId === 'sec-reportes') {
                         actualizarReportes();
                     }
                 });
             });
 
-            // --- MÓDULO ESTUDIANTES ---
+            // --- ESTUDIANTES ---
             const btnEstudiante = document.getElementById('btn-registrar-estudiante');
             btnEstudiante.addEventListener('click', () => {
                 const codigo = document.getElementById('est-codigo').value.trim();
@@ -265,6 +331,11 @@
                 actualizarTablaEstudiantes();
                 actualizarSelects();
                 actualizarReportes();
+
+                // Mostrar a quién se está registrando
+                const alertBox = document.getElementById('alert-estudiante');
+                document.getElementById('text-alert-estudiante').innerHTML = `Registrando actualmente a: <strong>${nombres} ${apellidos}</strong> con código <strong>[${codigo}]</strong>.`;
+                alertBox.style.display = 'flex';
 
                 // Limpiar campos
                 document.getElementById('est-codigo').value = '';
@@ -296,13 +367,15 @@
             }
 
             window.eliminarEstudiante = (index) => {
+                const est = estudiantes[index];
+                document.getElementById('alert-estudiante').style.display = 'none';
                 estudiantes.splice(index, 1);
                 actualizarTablaEstudiantes();
                 actualizarSelects();
                 actualizarReportes();
             };
 
-            // --- MÓDULO CURSOS ---
+            // --- CURSOS ---
             const btnCurso = document.getElementById('btn-registrar-curso');
             btnCurso.addEventListener('click', () => {
                 const codigo = document.getElementById('cur-codigo').value.trim();
@@ -322,7 +395,11 @@
                 actualizarSelects();
                 actualizarReportes();
 
-                // Limpiar campos
+                // Mostrar a qué curso se está registrando
+                const alertBox = document.getElementById('alert-curso');
+                document.getElementById('text-alert-curso').innerHTML = `Registrando actualmente el curso: <strong>${nombre}</strong> asignado al docente <strong>${docente || 'Sin Asignar'}</strong>.`;
+                alertBox.style.display = 'flex';
+
                 document.getElementById('cur-codigo').value = '';
                 document.getElementById('cur-nombre').value = '';
                 document.getElementById('cur-creditos').value = '';
@@ -348,13 +425,14 @@
             }
 
             window.eliminarCurso = (index) => {
+                document.getElementById('alert-curso').style.display = 'none';
                 cursos.splice(index, 1);
                 actualizarTablaCursos();
                 actualizarSelects();
                 actualizarReportes();
             };
 
-            // --- MÓDULO MATRÍCULAS ---
+            // --- MATRÍCULAS ---
             function actualizarSelects() {
                 const selectEst = document.getElementById('mat-estudiante');
                 const selectCur = document.getElementById('mat-curso');
@@ -381,7 +459,7 @@
                 }
 
                 const alumnoSelected = estudiantes[estIdx];
-                const cursoSelected = cures = cursos[curIdx];
+                const cursoSelected = cursos[curIdx];
 
                 const nuevaMat = {
                     estudiante: `${alumnoSelected.nombres} ${alumnoSelected.apellidos}`,
@@ -391,6 +469,11 @@
                 matriculas.push(nuevaMat);
                 actualizarTablaMatriculas();
                 actualizarReportes();
+
+                // Mostrar a quién estás matriculando
+                const alertBox = document.getElementById('alert-matricula');
+                document.getElementById('text-alert-matricula').innerHTML = `Matriculando actualmente a: <strong>${nuevaMat.estudiante}</strong> en la materia de <strong>${nuevaMat.curso}</strong>.`;
+                alertBox.style.display = 'flex';
 
                 document.getElementById('mat-estudiante').value = "";
                 document.getElementById('mat-curso').value = "";
@@ -413,16 +496,20 @@
             }
 
             window.eliminarMatricula = (index) => {
+                document.getElementById('alert-matricula').style.display = 'none';
                 matriculas.splice(index, 1);
                 actualizarTablaMatriculas();
                 actualizarReportes();
             };
 
-            // --- ACTUALIZAR CONTADORES ---
+            // --- REPORTES ---
             function actualizarReportes() {
                 document.getElementById('rep-total-estudiantes').textContent = estudiantes.length;
                 document.getElementById('rep-total-cursos').textContent = cursos.length;
                 document.getElementById('rep-total-matriculas').textContent = matriculas.length;
+
+                // Actualizar aviso del reporte analítico
+                document.getElementById('text-alert-reporte').innerHTML = `Último análisis completado. Base de datos con <strong>${estudiantes.length}</strong> alumnos activos y <strong>${matriculas.length}</strong> asignaciones de matrículas.`;
             }
         });
     </script>
