@@ -1,35 +1,54 @@
-    <script>
-    document.addEventListener('DOMContentLoaded', () => {
-        // Buscamos el formulario o el botón de ingresar de tu Login
-        // Nota: Asegúrate de que tus inputs tengan estos mismos ID o cámbialos por los tuyos
-        const btnIngresar = document.querySelector('.login-btn') || document.getElementById('btn-login');
-        
-        if (btnIngresar) {
-            btnIngresar.addEventListener('click', (e) => {
-                e.preventDefault(); // Evitamos que la página se recargue sola
-                
-                // Capturamos los campos de texto del login
-                const usuarioInput = document.getElementById('username') || document.querySelector('input[type="text"]');
-                const passwordInput = document.getElementById('password') || document.querySelector('input[type="password"]');
-                
-                if (!usuarioInput || !passwordInput) {
-                    alert("Error interno: No se encontraron los campos de usuario o contraseña.");
-                    return;
-                }
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EduSystem - Inicio de Sesión</title>
+    <!-- Enlace a tus estilos generales del proyecto -->
+    <link rel="stylesheet" href="css/estilos.css">
+    <!-- Iconos profesionales para los campos -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body class="login-body-layout">
 
-                const usuario = usuarioInput.value.trim();
-                const password = passwordInput.value.trim();
+    <div class="login-container">
+        <!-- Encabezado de la Tarjeta de Login -->
+        <div class="login-header">
+            <div class="login-logo-circle">
+                <i class="fa-solid fa-graduation-cap"></i>
+            </div>
+            <h2>EduSystem</h2>
+            <p>Sistema de Gestión Académica</p>
+        </div>
 
-                // Validación estricta que solicitaste
-                if (usuario === 'henry' && password === '1234') {
-                    // Guardamos una "llave" temporal en el navegador para saber que sí inició sesión
-                    localStorage.setItem('session_login', 'true');
-                    // Redireccionamos al panel
-                    window.location.href = 'dashboard.html';
-                } else {
-                    alert('❌ Usuario o contraseña incorrectos. Inténtalo de nuevo.');
-                }
-            });
-        }
-    });
-</script>
+        <!-- Formulario Limpio de Acceso -->
+        <form class="login-form" onsubmit="return false;">
+            <div class="login-input-group">
+                <label for="username">Usuario</label>
+                <div class="input-wrapper">
+                    <i class="fa-solid fa-user"></i>
+                    <input type="text" id="username" placeholder="Ingrese su usuario">
+                </div>
+            </div>
+
+            <div class="login-input-group">
+                <label for="password">Contraseña</label>
+                <div class="input-wrapper">
+                    <i class="fa-solid fa-lock"></i>
+                    <input type="password" id="password" placeholder="Ingrese su contraseña">
+                </div>
+            </div>
+
+            <!-- Botón original que redirige directamente sin restricciones artificiales -->
+            <button type="submit" class="login-btn" onclick="window.location.href='dashboard.html'">
+                Ingresar <i class="fa-solid fa-arrow-right-to-bracket"></i>
+            </button>
+        </form>
+
+        <div class="login-footer">
+            <p>&copy; 2026 EduSystem. Todos los derechos reservados.</p>
+        </div>
+    </div>
+
+</body>
+</html>
