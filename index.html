@@ -4,51 +4,53 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>EduSystem - Inicio de Sesión</title>
-    <!-- Enlace a tus estilos generales del proyecto -->
-    <link rel="stylesheet" href="css/estilos.css">
-    <!-- Iconos profesionales para los campos -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+        body { background: #f0f2f5; display: flex; justify-content: center; align-items: center; height: 100vh; }
+        .login-container { background: white; padding: 40px; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.08); width: 100%; max-width: 400px; text-align: center; }
+        .login-header i { font-size: 50px; color: #0b6cb6; margin-bottom: 10px; }
+        .login-header h2 { color: #2c3e50; font-size: 26px; margin-bottom: 5px; }
+        .login-header p { color: #7f8c8d; font-size: 14px; margin-bottom: 30px; }
+        .login-input-group { text-align: left; margin-bottom: 20px; }
+        .login-input-group label { display: block; color: #2c3e50; font-weight: 600; font-size: 14px; margin-bottom: 8px; }
+        .input-wrapper { position: relative; display: flex; align-items: center; }
+        .input-wrapper i { position: absolute; left: 12px; color: #95a5a6; }
+        .input-wrapper input { width: 100%; padding: 12px 12px 12px 38px; border: 1px solid #dcdde1; border-radius: 6px; font-size: 14px; outline: none; }
+        .login-btn { width: 100%; background: #0b6cb6; color: white; border: none; padding: 12px; border-radius: 6px; font-size: 16px; font-weight: bold; cursor: pointer; margin-top: 10px; transition: background 0.3s; }
+        .login-btn:hover { background: #09548f; }
+        .login-footer { margin-top: 25px; color: #bdc3c7; font-size: 12px; }
+    </style>
 </head>
-<body class="login-body-layout">
-
+<body>
     <div class="login-container">
-        <!-- Encabezado de la Tarjeta de Login -->
         <div class="login-header">
-            <div class="login-logo-circle">
-                <i class="fa-solid fa-graduation-cap"></i>
-            </div>
+            <i class="fa-solid fa-graduation-cap"></i>
             <h2>EduSystem</h2>
             <p>Sistema de Gestión Académica</p>
         </div>
-
-        <!-- Formulario Limpio de Acceso -->
-        <form class="login-form" onsubmit="return false;">
+        <form onsubmit="return false;">
             <div class="login-input-group">
-                <label for="username">Usuario</label>
+                <label>Usuario</label>
                 <div class="input-wrapper">
                     <i class="fa-solid fa-user"></i>
-                    <input type="text" id="username" placeholder="Ingrese su usuario">
+                    <input type="text" placeholder="Ingrese su usuario">
                 </div>
             </div>
-
             <div class="login-input-group">
-                <label for="password">Contraseña</label>
+                <label>Contraseña</label>
                 <div class="input-wrapper">
                     <i class="fa-solid fa-lock"></i>
-                    <input type="password" id="password" placeholder="Ingrese su contraseña">
+                    <input type="password" placeholder="Ingrese su contraseña">
                 </div>
             </div>
-
-            <!-- Botón original que redirige directamente sin restricciones artificiales -->
             <button type="submit" class="login-btn" onclick="window.location.href='dashboard.html'">
                 Ingresar <i class="fa-solid fa-arrow-right-to-bracket"></i>
             </button>
         </form>
-
         <div class="login-footer">
             <p>&copy; 2026 EduSystem. Todos los derechos reservados.</p>
         </div>
     </div>
-
 </body>
 </html>
