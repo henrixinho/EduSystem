@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>EduSystem - Panel Principal</title>
+    <title>EduSystem - Panel de Gestión</title>
     <link rel="stylesheet" href="css/estilos.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
@@ -15,21 +15,22 @@
             <h3>EduSystem</h3>
         </div>
         <nav class="dash-sidebar-menu">
-            <a href="#" class="dash-active"><i class="fa-solid fa-table-columns"></i> Inicio (Resumen)</a>
-            <a href="#" onclick="alert('Módulo de Registro de Estudiantes en desarrollo.')"><i class="fa-solid fa-address-card"></i> Registro de Alumnos</a>
-            <a href="#" onclick="alert('Módulo de Control de Matrículas en desarrollo.')"><i class="fa-solid fa-graduation-cap"></i> Control de Matrículas</a>
-            <a href="#" onclick="alert('Módulo de Seguimiento Académico en desarrollo.')"><i class="fa-solid fa-chart-line"></i> Seguimiento y Notas</a>
-            <a href="#" onclick="alert('Módulo de Reportes Estadísticos en desarrollo.')"><i class="fa-solid fa-file-invoice-dollar"></i> Reportes de Gestión</a>
+            <a href="#" class="menu-item dash-active" data-target="sec-inicio"><i class="fa-solid fa-house"></i> Inicio</a>
+            <a href="#" class="menu-item" data-target="sec-estudiantes"><i class="fa-solid fa-user-graduate"></i> Estudiantes</a>
+            <a href="#" class="menu-item" data-target="sec-cursos"><i class="fa-solid fa-book"></i> Cursos</a>
+            <a href="#" class="menu-item" data-target="sec-matriculas"><i class="fa-solid fa-graduation-cap"></i> Matrículas</a>
+            <a href="#" class="menu-item" data-target="sec-reportes"><i class="fa-solid fa-chart-pie"></i> Reportes</a>
             
             <a href="index.html" class="dash-logout-btn"><i class="fa-solid fa-right-from-bracket"></i> Cerrar Sesión</a>
         </nav>
     </div>
 
     <div class="dash-main-content">
+        
         <header class="dash-main-header">
             <div>
-                <h2>Panel de Control Institucional</h2>
-                <p style="color: #7f8c8d; font-size: 13px; margin-top: 4px;">Seguimiento en tiempo real para la toma de decisiones</p>
+                <h2 id="dash-title">Panel de Control - Inicio</h2>
+                <p style="color: #7f8c8d; font-size: 13px; margin-top: 4px;">Sistema Integral de Gestión Académica</p>
             </div>
             <div class="dash-user-info">
                 <span>Bienvenido, <strong>Henry Yeren</strong></span>
@@ -37,85 +38,250 @@
             </div>
         </header>
 
-        <div class="dash-cards-container">
-            <div class="dash-card">
-                <div class="dash-card-icon" style="background-color: rgba(11, 108, 182, 0.1); color: #0b6cb6;">
-                    <i class="fa-solid fa-users"></i>
-                </div>
-                <div class="dash-card-info">
-                    <h3>1,248</h3>
-                    <p>Total Alumnos</p>
-                </div>
+        <section id="sec-inicio" class="dash-section">
+            <div class="dash-data-container" style="text-align: center; padding: 50px 20px;">
+                <i class="fa-solid fa-school" style="font-size: 60px; color: var(--accent-color); margin-bottom: 20px;"></i>
+                <h2>Bienvenido al Sistema de Gestión EduSystem</h2>
+                <p style="color: #7f8c8d; max-width: 60px; width: 100%; margin: 15px auto 0 auto; font-size: 15px; line-height: 1.6;">
+                    Utilice el menú lateral de la izquierda para navegar entre los módulos de registro de alumnos, administración de asignaturas, control de matrículas y visualización de reportes estadísticos en tiempo real.
+                </p>
             </div>
-            <div class="dash-card">
-                <div class="dash-card-icon" style="background-color: rgba(23, 185, 120, 0.1); color: #17b978;">
-                    <i class="fa-solid fa-clipboard-check"></i>
-                </div>
-                <div class="dash-card-info">
-                    <h3>94.2%</h3>
-                    <p>Eficiencia Matrículas</p>
-                </div>
-            </div>
-            <div class="dash-card">
-                <div class="dash-card-icon" style="background-color: rgba(243, 156, 18, 0.1); color: #f39c12;">
-                    <i class="fa-solid fa-triangle-exclamation"></i>
-                </div>
-                <div class="dash-card-info">
-                    <h3>12</h3>
-                    <p>Alertas de Errores</p>
-                </div>
-            </div>
-        </div>
+        </section>
 
-        <div class="dash-data-container">
-            <div class="dash-table-actions">
-                <div class="dash-search-box">
-                    <i class="fa-solid fa-magnifying-glass"></i>
-                    <input type="text" placeholder="Buscar alumno por código o DNI...">
+        <section id="sec-estudiantes" class="dash-section" style="display: none;">
+            <div class="dash-data-container" style="margin-bottom: 25px;">
+                <h3 style="margin-bottom: 15px; color: #2c3e50;"><i class="fa-solid fa-user-plus"></i> Registrar Estudiante</h3>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 15px; align-items: flex-end;">
+                    <div class="dash-form-group" style="margin: 0;">
+                        <label>Código</label>
+                        <input type="text" placeholder="Ej. A202601">
+                    </div>
+                    <div class="dash-form-group" style="margin: 0;">
+                        <label>Nombres</label>
+                        <input type="text" placeholder="Ingrese nombres">
+                    </div>
+                    <div class="dash-form-group" style="margin: 0;">
+                        <label>Apellidos</label>
+                        <input type="text" placeholder="Ingrese apellidos">
+                    </div>
+                    <div class="dash-form-group" style="margin: 0;">
+                        <label>Carrera</label>
+                        <input type="text" placeholder="Ej. Ing. de Sistemas">
+                    </div>
+                    <div class="dash-form-group" style="margin: 0;">
+                        <label>Ciclo</label>
+                        <input type="text" placeholder="Ej. III">
+                    </div>
+                    <div class="dash-form-group" style="margin: 0;">
+                        <label>Correo</label>
+                        <input type="email" placeholder="correo@ejemplo.com">
+                    </div>
+                    <button class="dash-btn-primary" style="height: 40px; justify-content: center;" onclick="alert('Estudiante registrado exitosamente (Simulado)')">
+                        Registrar estudiante
+                    </button>
                 </div>
-                <button class="dash-btn-primary" onclick="alert('Abriendo formulario de inserción segura...')">
-                    <i class="fa-solid fa-plus"></i> Nueva Matrícula
-                </button>
             </div>
 
-            <div class="dash-table-responsive">
-                <table class="dash-table">
-                    <thead>
-                        <tr>
-                            <th>Código</th>
-                            <th>Nombres y Apellidos</th>
-                            <th>Especialidad / Carrera</th>
-                            <th>Estado Matrícula</th>
-                            <th>Rendimiento</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td><strong>A20260101</strong></td>
-                            <td>Henry Eduardo Yeren Almeyda</td>
-                            <td>Ingeniería de Sistemas</td>
-                            <td><span class="dash-status-badge activo">Regular</span></td>
-                            <td><strong style="color: #17b978;">18.5</strong></td>
-                        </tr>
-                        <tr>
-                            <td><strong>A20260102</strong></td>
-                            <td>Ana María Torres Mendoza</td>
-                            <td>Ingeniería Industrial</td>
-                            <td><span class="dash-status-badge activo">Regular</span></td>
-                            <td><strong style="color: #17b978;">16.0</strong></td>
-                        </tr>
-                        <tr>
-                            <td><strong>A20260103</strong></td>
-                            <td>Carlos Javier Mendoza Cruz</td>
-                            <td>Arquitectura</td>
-                            <td><span class="dash-status-badge inactivo">Observado</span></td>
-                            <td><strong style="color: #e74c3c;">10.2</strong></td>
-                        </tr>
-                    </tbody>
-                </table>
+            <div class="dash-data-container">
+                <h3 style="margin-bottom: 15px; color: #2c3e50;"><i class="fa-solid fa-list"></i> Lista de Estudiantes</h3>
+                <div class="dash-table-responsive">
+                    <table class="dash-table">
+                        <thead>
+                            <tr>
+                                <th>Código</th>
+                                <th>Nombres</th>
+                                <th>Apellidos</th>
+                                <th>Carrera</th>
+                                <th>Ciclo</th>
+                                <th>Correo</th>
+                                <th>Acción</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>A20260101</strong></td>
+                                <td>Henry Eduardo</td>
+                                <td>Yeren Almeyda</td>
+                                <td>Ingeniería de Sistemas</td>
+                                <td>V</td>
+                                <td>henry.yeren@edu.pe</td>
+                                <td>
+                                    <button class="dash-btn-action edit"><i class="fa-solid fa-pen"></i></button>
+                                    <button class="dash-btn-action delete"><i class="fa-solid fa-trash"></i></button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
             </div>
-        </div>
+        </section>
+
+        <section id="sec-cursos" class="dash-section" style="display: none;">
+            <div class="dash-data-container" style="margin-bottom: 25px;">
+                <h3 style="margin-bottom: 15px; color: #2c3e50;"><i class="fa-solid fa-folder-plus"></i> Registrar Curso</h3>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; align-items: flex-end;">
+                    <div class="dash-form-group" style="margin: 0;">
+                        <label>Código Curso</label>
+                        <input type="text" placeholder="Ej. INF-301">
+                    </div>
+                    <div class="dash-form-group" style="margin: 0;">
+                        <label>Nombre Curso</label>
+                        <input type="text" placeholder="Ej. Estructura de Datos">
+                    </div>
+                    <div class="dash-form-group" style="margin: 0;">
+                        <label>Créditos</label>
+                        <input type="number" placeholder="Ej. 4">
+                    </div>
+                    <div class="dash-form-group" style="margin: 0;">
+                        <label>Docente</label>
+                        <input type="text" placeholder="Ej. Héctor Delgado">
+                    </div>
+                    <button class="dash-btn-primary" style="height: 40px; justify-content: center;" onclick="alert('Curso registrado exitosamente (Simulado)')">
+                        Registrar Curso
+                    </button>
+                </div>
+            </div>
+
+            <div class="dash-data-container">
+                <h3 style="margin-bottom: 15px; color: #2c3e50;"><i class="fa-solid fa-bookmark"></i> Cursos Registrados</h3>
+                <div class="dash-table-responsive">
+                    <table class="dash-table">
+                        <thead>
+                            <tr>
+                                <th>Código</th>
+                                <th>Curso</th>
+                                <th>Créditos</th>
+                                <th>Docente</th>
+                                <th>Acción</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>INF-301</strong></td>
+                                <td>Estructura de Datos y Algoritmos</td>
+                                <td>4</td>
+                                <td>Héctor Delgado</td>
+                                <td>
+                                    <button class="dash-btn-action edit"><i class="fa-solid fa-pen"></i></button>
+                                    <button class="dash-btn-action delete"><i class="fa-solid fa-trash"></i></button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <section id="sec-matriculas" class="dash-section" style="display: none;">
+            <div class="dash-data-container" style="margin-bottom: 25px;">
+                <h3 style="margin-bottom: 15px; color: #2c3e50;"><i class="fa-solid fa-file-signature"></i> Registrar Matrícula</h3>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 15px; align-items: flex-end;">
+                    <div class="dash-form-group" style="margin: 0;">
+                        <label>Seleccione estudiante</label>
+                        <select class="dash-select">
+                            <option value="">-- Seleccionar Alumno --</option>
+                            <option value="1">A20260101 - Henry Eduardo Yeren Almeyda</option>
+                        </select>
+                    </div>
+                    <div class="dash-form-group" style="margin: 0;">
+                        <label>Seleccione curso</label>
+                        <select class="dash-select">
+                            <option value="">-- Seleccionar Asignatura --</option>
+                            <option value="1">INF-301 - Estructura de Datos y Algoritmos</option>
+                        </select>
+                    </div>
+                    <button class="dash-btn-primary" style="height: 40px; justify-content: center;" onclick="alert('Matrícula procesada correctamente (Simulado)')">
+                        Registrar Matrícula
+                    </button>
+                </div>
+            </div>
+
+            <div class="dash-data-container">
+                <h3 style="margin-bottom: 15px; color: #2c3e50;"><i class="fa-solid fa-clipboard-list"></i> Historial de Matrículas</h3>
+                <div class="dash-table-responsive">
+                    <table class="dash-table">
+                        <thead>
+                            <tr>
+                                <th>Estudiante</th>
+                                <th>Curso</th>
+                                <th>Acción</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Henry Eduardo Yeren Almeyda</td>
+                                <td>Estructura de Datos y Algoritmos</td>
+                                <td>
+                                    <button class="dash-btn-action delete" title="Anular Matrícula"><i class="fa-solid fa-ban"></i></button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <section id="sec-reportes" class="dash-section" style="display: none;">
+            <div class="dash-cards-container">
+                <div class="dash-card">
+                    <div class="dash-card-icon" style="background-color: rgba(11, 108, 182, 0.1); color: #0b6cb6;">
+                        <i class="fa-solid fa-users"></i>
+                    </div>
+                    <div class="dash-card-info">
+                        <h3>1</h3>
+                        <p>Total de Estudiantes</p>
+                    </div>
+                </div>
+                <div class="dash-card">
+                    <div class="dash-card-icon" style="background-color: rgba(243, 156, 18, 0.1); color: #f39c12;">
+                        <i class="fa-solid fa-book-open"></i>
+                    </div>
+                    <div class="dash-card-info">
+                        <h3>1</h3>
+                        <p>Total de Cursos</p>
+                    </div>
+                </div>
+                <div class="dash-card">
+                    <div class="dash-card-icon" style="background-color: rgba(23, 185, 120, 0.1); color: #17b978;">
+                        <i class="fa-solid fa-file-invoice"></i>
+                    </div>
+                    <div class="dash-card-info">
+                        <h3>1</h3>
+                        <p>Total de Matrículas</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
     </div>
 
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const menuItems = document.querySelectorAll('.menu-item');
+            const sections = document.querySelectorAll('.dash-section');
+            const titleHeader = document.querySelector('#dash-title');
+
+            menuItems.forEach(item => {
+                item.addEventListener('click', (e) => {
+                    e.preventDefault();
+
+                    // 1. Quitar clase activa de todos los botones del menú
+                    menuItems.forEach(i => i.classList.remove('dash-active'));
+                    // 2. Añadir clase activa al botón presionado
+                    item.classList.add('dash-active');
+
+                    // 3. Ocultar todas las secciones
+                    sections.forEach(sec => sec.style.display = 'none');
+                    
+                    // 4. Mostrar solo la sección seleccionada
+                    const targetId = item.getAttribute('data-target');
+                    document.getElementById(targetId).style.display = 'block';
+
+                    // 5. Cambiar dinámicamente el título del encabezado superior
+                    titleHeader.textContent = 'Panel de Control - ' + item.textContent.trim();
+                });
+            });
+        });
+    </script>
 </body>
 </html>
