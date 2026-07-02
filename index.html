@@ -1,51 +1,35 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>EduSystem - Iniciar Sesión</title>
-    <link rel="stylesheet" href="css/estilos.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-</head>
-<body>
+    <script>
+    document.addEventListener('DOMContentLoaded', () => {
+        // Buscamos el formulario o el botón de ingresar de tu Login
+        // Nota: Asegúrate de que tus inputs tengan estos mismos ID o cámbialos por los tuyos
+        const btnIngresar = document.querySelector('.login-btn') || document.getElementById('btn-login');
+        
+        if (btnIngresar) {
+            btnIngresar.addEventListener('click', (e) => {
+                e.preventDefault(); // Evitamos que la página se recargue sola
+                
+                // Capturamos los campos de texto del login
+                const usuarioInput = document.getElementById('username') || document.querySelector('input[type="text"]');
+                const passwordInput = document.getElementById('password') || document.querySelector('input[type="password"]');
+                
+                if (!usuarioInput || !passwordInput) {
+                    alert("Error interno: No se encontraron los campos de usuario o contraseña.");
+                    return;
+                }
 
-    <div class="login-container">
-        <div class="login-header">
-            <div class="logo-container-box">
-                <img src="assets/logo.jpg" alt="EduSystem Logo">
-            </div>
-            <h1>EduSystem</h1>
-            <p>Sistema de Gestión de Estudiantes</p>
-        </div>
+                const usuario = usuarioInput.value.trim();
+                const password = passwordInput.value.trim();
 
-        <form id="loginForm" onsubmit="event.preventDefault(); alert('¡Inicio de sesión simulado con éxito!');">
-            <h2>Iniciar Sesión</h2>
-            
-            <div class="input-group">
-                <label for="usuario">Usuario</label>
-                <div class="input-wrapper">
-                    <i class="fa-regular fa-user"></i>
-                    <input type="text" id="usuario" name="usuario" placeholder="Ingrese su usuario" required>
-                </div>
-            </div>
-
-            <div class="input-group">
-                <label for="contrasena">Contraseña</label>
-                <div class="input-wrapper">
-                    <i class="fa-solid fa-lock"></i>
-                    <input type="password" id="contrasena" name="contrasena" placeholder="Ingrese su contraseña" required>
-                    <i class="fa-regular fa-eye toggle-password" id="togglePassword"></i>
-                </div>
-            </div>
-
-            <button type="submit" class="btn-submit">Ingresar</button>
-        </form>
-
-        <div class="login-footer">
-            <p>EduSystem &copy; 2026 - Todos los derechos reservados</p>
-        </div>
-    </div>
-
-    <script src="js/login.js"></script>
-</body>
-</html>
+                // Validación estricta que solicitaste
+                if (usuario === 'henry' && password === '1234') {
+                    // Guardamos una "llave" temporal en el navegador para saber que sí inició sesión
+                    localStorage.setItem('session_login', 'true');
+                    // Redireccionamos al panel
+                    window.location.href = 'dashboard.html';
+                } else {
+                    alert('❌ Usuario o contraseña incorrectos. Inténtalo de nuevo.');
+                }
+            });
+        }
+    });
+</script>
