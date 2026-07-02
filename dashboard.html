@@ -3,9 +3,119 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>EduSystem - Versión 2</title>
+    <title>EduSystem - Panel Principal</title>
+    <link rel="stylesheet" href="css/estilos.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
-<body>
+<body class="dash-body-layout">
 
-    </body>
+    <div class="dash-sidebar">
+        <div class="dash-sidebar-logo">
+            <img src="assets/logo.jpg" alt="EduSystem Logo">
+            <h3>EduSystem</h3>
+        </div>
+        <nav class="dash-sidebar-menu">
+            <a href="#" class="dash-active"><i class="fa-solid fa-table-columns"></i> Inicio (Resumen)</a>
+            <a href="#" onclick="alert('Módulo de Registro de Estudiantes en desarrollo.')"><i class="fa-solid fa-address-card"></i> Registro de Alumnos</a>
+            <a href="#" onclick="alert('Módulo de Control de Matrículas en desarrollo.')"><i class="fa-solid fa-graduation-cap"></i> Control de Matrículas</a>
+            <a href="#" onclick="alert('Módulo de Seguimiento Académico en desarrollo.')"><i class="fa-solid fa-chart-line"></i> Seguimiento y Notas</a>
+            <a href="#" onclick="alert('Módulo de Reportes Estadísticos en desarrollo.')"><i class="fa-solid fa-file-invoice-dollar"></i> Reportes de Gestión</a>
+            
+            <a href="index.html" class="dash-logout-btn"><i class="fa-solid fa-right-from-bracket"></i> Cerrar Sesión</a>
+        </nav>
+    </div>
+
+    <div class="dash-main-content">
+        <header class="dash-main-header">
+            <div>
+                <h2>Panel de Control Institucional</h2>
+                <p style="color: #7f8c8d; font-size: 13px; margin-top: 4px;">Seguimiento en tiempo real para la toma de decisiones</p>
+            </div>
+            <div class="dash-user-info">
+                <span>Bienvenido, <strong>Henry Yeren</strong></span>
+                <i class="fa-solid fa-circle-user" style="font-size: 24px; color: var(--accent-color);"></i>
+            </div>
+        </header>
+
+        <div class="dash-cards-container">
+            <div class="dash-card">
+                <div class="dash-card-icon" style="background-color: rgba(11, 108, 182, 0.1); color: #0b6cb6;">
+                    <i class="fa-solid fa-users"></i>
+                </div>
+                <div class="dash-card-info">
+                    <h3>1,248</h3>
+                    <p>Total Alumnos</p>
+                </div>
+            </div>
+            <div class="dash-card">
+                <div class="dash-card-icon" style="background-color: rgba(23, 185, 120, 0.1); color: #17b978;">
+                    <i class="fa-solid fa-clipboard-check"></i>
+                </div>
+                <div class="dash-card-info">
+                    <h3>94.2%</h3>
+                    <p>Eficiencia Matrículas</p>
+                </div>
+            </div>
+            <div class="dash-card">
+                <div class="dash-card-icon" style="background-color: rgba(243, 156, 18, 0.1); color: #f39c12;">
+                    <i class="fa-solid fa-triangle-exclamation"></i>
+                </div>
+                <div class="dash-card-info">
+                    <h3>12</h3>
+                    <p>Alertas de Errores</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="dash-data-container">
+            <div class="dash-table-actions">
+                <div class="dash-search-box">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                    <input type="text" placeholder="Buscar alumno por código o DNI...">
+                </div>
+                <button class="dash-btn-primary" onclick="alert('Abriendo formulario de inserción segura...')">
+                    <i class="fa-solid fa-plus"></i> Nueva Matrícula
+                </button>
+            </div>
+
+            <div class="dash-table-responsive">
+                <table class="dash-table">
+                    <thead>
+                        <tr>
+                            <th>Código</th>
+                            <th>Nombres y Apellidos</th>
+                            <th>Especialidad / Carrera</th>
+                            <th>Estado Matrícula</th>
+                            <th>Rendimiento</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>A20260101</strong></td>
+                            <td>Henry Eduardo Yeren Almeyda</td>
+                            <td>Ingeniería de Sistemas</td>
+                            <td><span class="dash-status-badge activo">Regular</span></td>
+                            <td><strong style="color: #17b978;">18.5</strong></td>
+                        </tr>
+                        <tr>
+                            <td><strong>A20260102</strong></td>
+                            <td>Ana María Torres Mendoza</td>
+                            <td>Ingeniería Industrial</td>
+                            <td><span class="dash-status-badge activo">Regular</span></td>
+                            <td><strong style="color: #17b978;">16.0</strong></td>
+                        </tr>
+                        <tr>
+                            <td><strong>A20260103</strong></td>
+                            <td>Carlos Javier Mendoza Cruz</td>
+                            <td>Arquitectura</td>
+                            <td><span class="dash-status-badge inactivo">Observado</span></td>
+                            <td><strong style="color: #e74c3c;">10.2</strong></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+</body>
 </html>
