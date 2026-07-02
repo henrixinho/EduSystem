@@ -1,6 +1,219 @@
 <!DOCTYPE html>
 <html lang="es">
+<head><!DOCTYPE html>
+<html lang="es">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EduSystem - Inicio de Sesión</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        /* ESTILOS GENERALES DEL LOGIN */
+        * { 
+            margin: 0; 
+            padding: 0; 
+            box-sizing: border-box; 
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
+        }
+        
+        body { 
+            /* Intentará cargar primero tu imagen local en assets. Si no está ahí, usará un fondo degradado profesional para que nunca se quede feo */
+            background: url('assets/fondo.jpg') no-repeat center center fixed, 
+                        linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+            background-size: cover;
+            display: flex; 
+            align-items: center; 
+            justify-content: center; 
+            height: 100vh; 
+            position: relative;
+        }
+
+        /* Capa oscura para dar contraste idéntica a tu captura */
+        body::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 1;
+        }
+
+        .login-container { 
+            background: white; 
+            padding: 40px; 
+            border-radius: 20px; 
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3); 
+            width: 100%; 
+            max-width: 420px; 
+            text-align: center; 
+            position: relative;
+            z-index: 2;
+            margin-top: 50px;
+        }
+
+        /* Contenedor del logo y títulos superiores en la posición exacta */
+        .login-brand-area {
+            position: absolute;
+            top: -110px;
+            left: 0;
+            width: 100%;
+            text-align: center;
+        }
+
+        .login-brand-area .login-logo-circle {
+            background: #ffffff;
+            width: 65px;
+            height: 65px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 10px auto;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+        }
+
+        .login-brand-area i { 
+            font-size: 32px; 
+            color: #1064a3; 
+        }
+
+        .login-brand-area h2 { 
+            color: #ffffff; 
+            font-size: 26px; 
+            font-weight: 700;
+            margin-bottom: 2px;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .login-brand-area p { 
+            color: #e0e0e0; 
+            font-size: 14px; 
+            text-shadow: 0 1px 3px rgba(0,0,0,0.3);
+        }
+
+        .login-container h3 {
+            font-size: 22px;
+            color: #2c3e50;
+            margin-bottom: 25px;
+            font-weight: 600;
+        }
+
+        .login-input-group { 
+            margin-bottom: 20px; 
+            text-align: left; 
+        }
+        
+        .login-input-group label { 
+            display: block; 
+            color: #475569; 
+            font-size: 14px; 
+            margin-bottom: 8px; 
+            font-weight: 600; 
+        }
+
+        .input-wrapper { 
+            position: relative; 
+            display: flex; 
+            align-items: center; 
+        }
+        
+        .input-wrapper i { 
+            position: absolute; 
+            left: 15px; 
+            color: #94a3b8; 
+            font-size: 16px;
+        }
+        
+        .input-wrapper input { 
+            width: 100%; 
+            padding: 14px 14px 14px 45px; 
+            border: 1px solid #cbd5e1; 
+            border-radius: 10px; 
+            outline: none; 
+            font-size: 15px; 
+            transition: 0.3s; 
+            background-color: #fff;
+            color: #334155;
+        }
+        
+        .input-wrapper input:focus { 
+            border-color: #1064a3; 
+            box-shadow: 0 0 0 3px rgba(16,100,163,0.15); 
+        }
+
+        /* BOTÓN AZUL INSTITUCIONAL PERFECTO */
+        .login-btn { 
+            width: 100%; 
+            background: #1064a3; 
+            color: white; 
+            border: none; 
+            padding: 14px; 
+            border-radius: 10px; 
+            font-size: 16px; 
+            font-weight: 600; 
+            cursor: pointer; 
+            margin-top: 15px; 
+            transition: background 0.2s ease; 
+            display: block;
+            text-align: center;
+        }
+        
+        .login-btn:hover { 
+            background: #0b4d7e; 
+        }
+
+        .login-footer { 
+            position: absolute;
+            bottom: -50px;
+            left: 0;
+            width: 100%;
+            color: #cbd5e1; 
+            font-size: 13px; 
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="login-container">
+        <div class="login-brand-area">
+            <div class="login-logo-circle">
+                <i class="fa-solid fa-graduation-cap"></i>
+            </div>
+            <h2>EduSystem</h2>
+            <p>Sistema de Gestión de Estudiantes</p>
+        </div>
+
+        <h3>Iniciar Sesión</h3>
+
+        <form class="login-form" onsubmit="return false;">
+            <div class="login-input-group">
+                <label for="username">Usuario</label>
+                <div class="input-wrapper">
+                    <i class="fa-solid fa-user"></i>
+                    <input type="text" id="username" placeholder="Ingrese su usuario">
+                </div>
+            </div>
+
+            <div class="login-input-group">
+                <label for="password">Contraseña</label>
+                <div class="input-wrapper">
+                    <i class="fa-solid fa-lock"></i>
+                    <input type="password" id="password" placeholder="Ingrese su contraseña">
+                </div>
+            </div>
+
+            <button type="submit" class="login-btn" onclick="window.location.href='dashboard.html'">
+                Ingresar
+            </button>
+        </form>
+
+        <div class="login-footer">
+            <p>EduSystem &copy; 2026 - Todos los derechos reservados</p>
+        </div>
+    </div>
+
+</body>
+</html>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>EduSystem - Inicio de Sesión</title>
